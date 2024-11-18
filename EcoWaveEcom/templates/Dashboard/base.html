@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        .scroll-container {
+            height: calc(100% - 6rem);
+            /* Adjust based on your header height */
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    {% include 'alert.html' %}
+    <!-- Top section: Header -->
+     {% include 'Dashboard/navbar.html' %}
+
+    <!-- Main content section with scrollbar -->
+    <div class="flex flex-col flex-grow">
+        <div class="scroll-container flex-grow overflow-y-auto">
+            <!-- Add margin-top to prevent content from overlapping with the header -->
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <!-- Footer section -->
+        <footer class="bg-gray-800 text-white">
+            {% include 'footer.html' %}
+        </footer>
+    </div>
+
+</body>
+
+</html>

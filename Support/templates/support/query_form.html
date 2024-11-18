@@ -1,0 +1,18 @@
+{% extends 'support/base.html' %}
+{% block title %}EcoWaveCart | Query{% endblock %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'Support/static/support/css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1 class="form-title text-[#D6C0B3]-800">Submit Query</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="form-submit bg-[#D6C0B3]-600 hover:bg-[#D6C0B3]-700">Submit</button>
+    </form>
+</div>
+{% endblock %}
